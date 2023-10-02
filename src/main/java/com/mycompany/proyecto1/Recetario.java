@@ -6,7 +6,8 @@ import java.util.ArrayList;
 public class Recetario {
     private ArrayList<Receta> recetas;
     private ArrayList<Utensilio> utensilios;
-
+    private ArrayList<Ingrediente> ingredientes;
+    
     public Recetario() {
         this.recetas = new ArrayList<>();
         this.utensilios = new ArrayList<>();
@@ -83,6 +84,53 @@ public class Recetario {
         } else {
             int recetaEliminar = codigoReceta - 1;
             recetas.remove(recetaEliminar);
+        }
+    }
+    
+        public void agregarIngrediente(String nombre) {
+        Ingrediente miIngrediente = new Ingrediente(nombre);
+        miIngrediente.disponibilidad(true); 
+        ingredientes.add(miIngrediente); 
+    }
+    
+        
+    public Ingrediente obtenerIngrediente(int codigo) {
+        for (Ingrediente ingrediente : ingredientes) {
+            if (ingrediente.getCodigo() == codigo) {
+                return ingrediente; 
+            }
+            else {
+                return null;
+            }
+        }
+        return null; 
+    }
+    
+    public String verIngrediente(int codigo) {
+        Ingrediente miIngrediente = obtenerIngrediente(codigo);
+        if (miIngrediente != null) {
+            System.out.println("El ingrediente es: " + Ingrediente.getNombre);
+        }
+        else {
+            System.out.println("Ingrediente no encontrado");
+        }
+        return null;
+    }
+    
+    public ArrayList<String> verListaIngredientes() {
+        ArrayList<String> listaIngredientes = new ArrayList<>();
+        for (Ingrediente ingrediente : ingredientes) {
+            listaIngredientes.add(ingrediente.toString());
+        }
+        return listaIngredientes;
+    }
+     
+    public void eliminarIngrediente(int codigoIngrediente){
+        Ingrediente ingrediente = obtenerIngrediente(codigoIngrediente);
+        if (ingrediente == null){
+            System.out.println("Ingrediente ingresada no existe");
+        } else {
+            ingredientes.remove(codigoIngrediente);
         }
     }
     
