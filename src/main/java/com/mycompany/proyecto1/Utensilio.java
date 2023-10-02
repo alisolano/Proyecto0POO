@@ -21,6 +21,10 @@ public class Utensilio {
     public boolean verDisponibilidad(){
         return disponibilidad;
     }
+
+    public void setDisponibilidad(boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
     
     public String toString(){
         return "Nombre: " + nombre + 
