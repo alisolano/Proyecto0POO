@@ -87,9 +87,8 @@ public class Recetario {
         }
     }
     
-        public void agregarIngrediente(String nombre) {
+    public void agregarIngrediente(String nombre) {
         Ingrediente miIngrediente = new Ingrediente(nombre);
-        miIngrediente.disponibilidad(true); 
         ingredientes.add(miIngrediente); 
     }
     
@@ -99,22 +98,17 @@ public class Recetario {
             if (ingrediente.getCodigo() == codigo) {
                 return ingrediente; 
             }
-            else {
-                return null;
-            }
         }
         return null; 
     }
     
-    public String verIngrediente(int codigo) {
-        Ingrediente miIngrediente = obtenerIngrediente(codigo);
-        if (miIngrediente != null) {
-            System.out.println("El ingrediente es: " + Ingrediente.getNombre);
+    public String verIngrediente (int codigoIngrediente) {
+        Ingrediente ingrediente = obtenerIngrediente(codigoIngrediente);
+        if (ingrediente == null){
+            System.out.println("Receta ingresada no existe");
         }
-        else {
-            System.out.println("Ingrediente no encontrado");
-        }
-        return null;
+        String ingredienteInfo = ingrediente.toString();
+        return ingredienteInfo;
     }
     
     public ArrayList<String> verListaIngredientes() {
