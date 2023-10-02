@@ -1,6 +1,4 @@
 package com.mycompany.proyecto1;
-
-
 public class Utensilio {
     private String nombre;
     public static int consecutivo = 0;

@@ -1,3 +1,4 @@
+package com.mycompany.proyecto1;
 public class Ingrediente {
     
     public static int consecutivo = 0;
@@ -9,7 +10,7 @@ public class Ingrediente {
         consecutivo++;
         this.codigo = consecutivo;
         this.nombre = nombre;
-        disponibilidad = true;
+        this.disponibilidad = true;
     }
       
     public void editarIngrediente(String nombre, boolean disponibilidad) {
@@ -30,6 +31,10 @@ public class Ingrediente {
     
     public String getNombre() {
         return nombre;
+    }
+    
+    public int getCodigo() {
+        return codigo;
     }
     
     public String toString() {
