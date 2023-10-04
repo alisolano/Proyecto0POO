@@ -111,8 +111,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        UtensiliosInterfaz u = new UtensiliosInterfaz(this, true);
-        u.setVisible(true);
+        /*AgregarIngrediente GUI = new AgregarIngrediente();
+        GUI.setVisible(true); */
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
