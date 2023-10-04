@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 // clase controladora
 public class Recetario {
+    
+    private static Recetario Instancia; // Esto lo cree para poder acceder a los metodos de recetario desde las interfaces graficas
+    
     private ArrayList<Receta> recetas;
     private ArrayList<Utensilio> utensilios;
     private ArrayList<Ingrediente> ingredientes;
@@ -11,6 +14,16 @@ public class Recetario {
     public Recetario() {
         this.recetas = new ArrayList<>();
         this.utensilios = new ArrayList<>();
+        this.ingredientes = new ArrayList<>();
+    }
+    
+    // Metodo para obtener la instancia unica de recetario, funiona para llamar los metodos en las interfacez
+    public static Recetario getInstancia() {
+        if (Instancia == null) {
+            Instancia = new Recetario();
+        }
+        return Instancia;
+        
     }
     
     private Utensilio obtenerUtensilio (int codigo){
