@@ -26,14 +26,14 @@ public class Recetario {
         
     }
     
-    private Utensilio obtenerUtensilio (int codigo){
+    public Utensilio obtenerUtensilio (int codigo){
         int indice = codigo - 1;
         if(indice >= 0 && indice < utensilios.size()){
             return utensilios.get(indice);
         }
         return null;        
     }
-    private Receta obtenerReceta(int codigo){
+    public Receta obtenerReceta(int codigo){
         int indice = codigo - 1;
         if(indice >= 0 && indice < recetas.size()){
             return recetas.get(indice);
