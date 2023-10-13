@@ -8,6 +8,7 @@ package com.mycompany.proyecto1;
  *
  * @author JP113
  */
+//Prueba
 public class AgregarIngredientes extends javax.swing.JDialog {
 
     /**
