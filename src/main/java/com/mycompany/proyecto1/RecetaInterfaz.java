@@ -4,6 +4,8 @@
  */
 package com.mycompany.proyecto1;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author JP113
@@ -13,13 +15,24 @@ public class RecetaInterfaz extends javax.swing.JDialog {
     /**
      * Creates new form RecetaInterfaz
      */
+        private DefaultListModel<String> recetaListModel;
+    
+        Recetario recetario = Recetario.getInstancia();
+    
     public RecetaInterfaz(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+                // Inicializar el modelo de la lista
+        recetaListModel = new DefaultListModel<>();
+        jList1.setModel(recetaListModel);
+
+        // Agregar los elementos del ArrayList de ingredientes al modelo de la lista
+        for (String receta : recetario.verListaRecetas()) {
+            recetaListModel.addElement(receta);
+        }
     }
     
-    public Recetario recetario; // Creo una instancia de recetario    
-
     public static void SuccessBox(String mensaje, String titulo) {
             //Esta funcion es para que salte un mensaje de confirmacion en caso de que se agregue el ingrediente
             javax.swing.JOptionPane.showMessageDialog((null), mensaje, "Ingrediente agregado con exito" + titulo, javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -68,6 +81,11 @@ public class RecetaInterfaz extends javax.swing.JDialog {
         });
 
         EliminarBtn.setText("Eliminar");
+        EliminarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarBtnActionPerformed(evt);
+            }
+        });
 
         EditarBtn.setText("Editar");
 
@@ -88,8 +106,8 @@ public class RecetaInterfaz extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EliminarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AgregarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -100,7 +118,7 @@ public class RecetaInterfaz extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloLabel)
                             .addComponent(AtrasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(237, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,6 +152,11 @@ public class RecetaInterfaz extends javax.swing.JDialog {
         AgregarReceta a = new AgregarReceta(null, true);
         a.setVisible(true);
     }//GEN-LAST:event_AgregarBtnActionPerformed
+
+    private void EliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarBtnActionPerformed
+        EliminarReceta a = new EliminarReceta(null, true);
+        a.setVisible(true);
+    }//GEN-LAST:event_EliminarBtnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -147,6 +147,7 @@ public class AgregarReceta extends javax.swing.JDialog {
     }//GEN-LAST:event_CancelarBtnActionPerformed
 
     private void AgregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarBtnActionPerformed
+
         try {   
             String nombre = NombreField.getText();
 
@@ -162,6 +163,7 @@ public class AgregarReceta extends javax.swing.JDialog {
                 Recetario recetario = Recetario.getInstancia();
                 recetario.agregarReceta(nombre, valorDuracion, valorPorcion, etiqueta, dificultad);
                 SuccessBox("Se ha agregado la receta con éxito", "");
+                dispose(); // Cierra esta ventana únicamente, no el proyecto
             } else {
                 FailBox("Por favor, complete todos los campos con valores válidos", "");
             }

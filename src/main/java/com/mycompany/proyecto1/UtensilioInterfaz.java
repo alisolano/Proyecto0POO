@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package com.mycompany.proyecto1;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 /**
  *
@@ -13,9 +15,23 @@ public class UtensilioInterfaz extends javax.swing.JDialog {
     /**
      * Creates new form UtensilioInterfaz
      */
+    
+    private DefaultListModel<String> utensilioListModel;
+    
+        Recetario recetario = Recetario.getInstancia();
+    
     public UtensilioInterfaz(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        // Inicializar el modelo de la lista
+        utensilioListModel = new DefaultListModel<>();
+        jList1.setModel(utensilioListModel);
+
+        // Agregar los elementos del ArrayList de ingredientes al modelo de la lista
+        for (String ingrediente : recetario.verListaIngredientes()) {
+            utensilioListModel.addElement(ingrediente);
+        }
     }
 
     /**
@@ -99,7 +115,6 @@ public class UtensilioInterfaz extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)
                         .addGap(19, 19, 19)))
-                .addGap(18, 18, 18)
                 .addComponent(AtrasBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -114,7 +129,6 @@ public class UtensilioInterfaz extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         AgregarUtensilio a = new AgregarUtensilio(null, true);
         a.setVisible(true);
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

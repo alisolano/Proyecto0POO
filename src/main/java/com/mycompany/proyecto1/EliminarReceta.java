@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package com.mycompany.proyecto1;
+import javax.swing.*;
 
 /**
  *
  * @author JP113
  */
-public class AgregarIngredientes extends javax.swing.JDialog {
+public class EliminarReceta extends javax.swing.JDialog {
 
     /**
-     * Creates new form AgregarIngredientes
+     * Creates new form EliminarReceta
      */
-    public AgregarIngredientes(java.awt.Frame parent, boolean modal) {
+    public EliminarReceta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -27,7 +28,8 @@ public class AgregarIngredientes extends javax.swing.JDialog {
             //Esta funcion es para que salte un mensaje de error en caso de que se falle algo
             javax.swing.JOptionPane.showMessageDialog((null), mensaje, "Ingrediente agregado con exito" + titulo, javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-    }
+    } 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,22 +40,19 @@ public class AgregarIngredientes extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        NombreField = new javax.swing.JTextField();
-        AgregarBtn = new javax.swing.JButton();
+        EliminarBtn = new javax.swing.JButton();
         CancelarBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        JSpinner = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jLabel1.setText("Agregar Ingredientes");
+        jLabel1.setText("Ingrese el codigo de la receta que desea eliminar");
 
-        jLabel2.setText("Nombre:");
-
-        AgregarBtn.setText("Agregar");
-        AgregarBtn.addActionListener(new java.awt.event.ActionListener() {
+        EliminarBtn.setText("Eliminar");
+        EliminarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarBtnActionPerformed(evt);
+                EliminarBtnActionPerformed(evt);
             }
         });
 
@@ -64,59 +63,64 @@ public class AgregarIngredientes extends javax.swing.JDialog {
             }
         });
 
+        jLabel2.setText("Codigo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CancelarBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(AgregarBtn))
-                            .addComponent(NombreField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel1)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(JSpinner))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(CancelarBtn)
+                            .addGap(18, 18, 18)
+                            .addComponent(EliminarBtn)))
+                    .addComponent(jLabel1))
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(NombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AgregarBtn)
+                    .addComponent(EliminarBtn)
                     .addComponent(CancelarBtn))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void EliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarBtnActionPerformed
+        int codigo = (int) JSpinner.getValue();
+
+        Recetario recetario = Recetario.getInstancia();
+
+        if (!recetario.existeReceta(codigo)) {
+            JOptionPane.showMessageDialog(this, "Receta no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            recetario.borrarReceta(codigo);
+            SuccessBox("Receta eliminada con éxito", "");
+            dispose(); // Cierra esta ventana únicamente, no el proyecto
+        }
+
+    }//GEN-LAST:event_EliminarBtnActionPerformed
+
     private void CancelarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarBtnActionPerformed
         dispose(); //cierra esta ventana unicamente, no el proyecto
     }//GEN-LAST:event_CancelarBtnActionPerformed
-
-    private void AgregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarBtnActionPerformed
-        String nombre = NombreField.getText();
-        
-        Recetario recetario = Recetario.getInstancia();
-        
-        recetario.agregarIngrediente(nombre);
-        SuccessBox("Ingrediente agregado con exito","");
-        dispose(); //cierra esta ventana unicamente, no el proyecto
-    }//GEN-LAST:event_AgregarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,20 +139,20 @@ public class AgregarIngredientes extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarIngredientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EliminarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarIngredientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EliminarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarIngredientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EliminarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarIngredientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EliminarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AgregarIngredientes dialog = new AgregarIngredientes(new javax.swing.JFrame(), true);
+                EliminarReceta dialog = new EliminarReceta(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -161,9 +165,9 @@ public class AgregarIngredientes extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AgregarBtn;
     private javax.swing.JButton CancelarBtn;
-    private javax.swing.JTextField NombreField;
+    private javax.swing.JButton EliminarBtn;
+    private javax.swing.JSpinner JSpinner;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

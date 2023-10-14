@@ -4,18 +4,18 @@ public class Ingrediente {
     public static int consecutivo = 0;
     private int codigo;
     private String nombre;
-    private boolean disponibilidad;
+    private boolean disponible;
     
     public Ingrediente(String nombre) {
         consecutivo++;
         this.codigo = consecutivo;
         this.nombre = nombre;
-        this.disponibilidad = true;
+        this.disponible = true;
     }
       
     public void editarIngrediente(String nombre, boolean disponibilidad) {
         this.nombre = nombre;
-        this.disponibilidad = disponibilidad;
+        this.disponible = disponibilidad;
     }
     
     public void verDisponibilidad(String nombre, boolean disponibilidad) {
@@ -37,9 +37,18 @@ public class Ingrediente {
         return codigo;
     }
     
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+    
     public String toString() {
         return 
-               ", Nombre: " + nombre +
-               ", Disponibilidad: " + (disponibilidad ? "Disponible" : "No disponible");
+               "Nombre: " + nombre +
+               ", Codigo: " + codigo +
+               ", Disponibilidad: " + (disponible ? "Disponible" : "No disponible");
     }
 }

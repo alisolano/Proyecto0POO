@@ -132,14 +132,26 @@ public class Recetario {
         return listaIngredientes;
     }
      
-    public void eliminarIngrediente(int codigoIngrediente){
+    public void eliminarIngrediente(int codigoIngrediente) {
         Ingrediente ingrediente = obtenerIngrediente(codigoIngrediente);
-        if (ingrediente == null){
-            System.out.println("Ingrediente ingresada no existe");
+        if (ingrediente == null) {
+            System.out.println("Ingrediente ingresado no existe");
         } else {
-            ingredientes.remove(codigoIngrediente);
+            ingredientes.remove(ingrediente);
+            System.out.println("Ingrediente eliminado con éxito");
         }
     }
+    
+    
+    public boolean existeIngrediente(int codigoIngrediente) {
+        return obtenerIngrediente(codigoIngrediente) != null;
+    }
+
+    public boolean existeReceta(int codigoReceta) {
+        return obtenerReceta(codigoReceta) != null;
+    }
+    
+    /*
     
     public ArrayList<Receta> filtrarRecetas(float duracion, Dificultad dificultad, String etiqueta) {
         ArrayList<Receta> recetasFiltradas = new ArrayList<>();
@@ -152,6 +164,8 @@ public class Recetario {
         return recetasFiltradas;
     }
     
-    public ArrayList<Receta> ordenarRecetas
+    public ArrayList<Receta> ordenarRecetas 
+    
+    */
   
 }
