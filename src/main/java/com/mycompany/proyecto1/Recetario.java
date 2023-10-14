@@ -26,14 +26,14 @@ public class Recetario {
         
     }
     
-    public Utensilio obtenerUtensilio (int codigo){
+    private Utensilio obtenerUtensilio (int codigo){
         int indice = codigo - 1;
         if(indice >= 0 && indice < utensilios.size()){
             return utensilios.get(indice);
         }
         return null;        
     }
-    public Receta obtenerReceta(int codigo){
+    private Receta obtenerReceta(int codigo){
         int indice = codigo - 1;
         if(indice >= 0 && indice < recetas.size()){
             return recetas.get(indice);
@@ -141,4 +141,17 @@ public class Recetario {
         }
     }
     
+    public ArrayList<Receta> filtrarRecetas(float duracion, Dificultad dificultad, String etiqueta) {
+        ArrayList<Receta> recetasFiltradas = new ArrayList<>();
+        for (Receta r : recetas) {
+            //ver si cumple los requisitos
+            if (r.getDuracion() <= duracion && r.getDificultad() == dificultad && r.getEtiqueta().equals(etiqueta)) {
+                recetasFiltradas.add(r);
+            }
+        }
+        return recetasFiltradas;
+    }
+    
+    public ArrayList<Receta> ordenarRecetas
+  
 }
