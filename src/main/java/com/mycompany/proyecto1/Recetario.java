@@ -55,13 +55,13 @@ public class Recetario {
         utensilios.add(utensilioNuevo);
     }
     
-    public void eliminarUtensilio(int codigoUtensilio){
+    public void eliminarUtensilio(int codigoUtensilio) {
         Utensilio utensilio = obtenerUtensilio(codigoUtensilio);
-        if (utensilio == null){
+        if (utensilio == null) {
             System.out.println("Utensilio ingresado no existe");
         } else {
-            int utensilioRemover = codigoUtensilio - 1;
-            recetas.remove(utensilioRemover);
+            utensilios.remove(utensilio);
+            System.out.println("Utensilio eliminado con éxito");
         }
     }
     
@@ -141,16 +141,7 @@ public class Recetario {
             System.out.println("Ingrediente eliminado con éxito");
         }
     }
-    
-    
-    public boolean existeIngrediente(int codigoIngrediente) {
-        return obtenerIngrediente(codigoIngrediente) != null;
-    }
-
-    public boolean existeReceta(int codigoReceta) {
-        return obtenerReceta(codigoReceta) != null;
-    }
-    
+        
     /*
     
     public ArrayList<Receta> filtrarRecetas(float duracion, Dificultad dificultad, String etiqueta) {
@@ -168,4 +159,56 @@ public class Recetario {
     
     */
   
+    
+    public boolean existeIngrediente(int codigoIngrediente) {
+        return obtenerIngrediente(codigoIngrediente) != null;
+    }
+
+    public boolean existeReceta(int codigoReceta) {
+        return obtenerReceta(codigoReceta) != null;
+    }
+    
+    public boolean existeUtensilio(int codigoUtensilio) {
+        return obtenerUtensilio(codigoUtensilio) != null;
+    }
+    
+    
+    public void editarIngrediente(int codigoIngrediente, String nuevoNombre, boolean disponible) {
+    Ingrediente ingrediente = obtenerIngrediente(codigoIngrediente);
+        if (ingrediente != null) {
+            ingrediente.setNombre(nuevoNombre);
+            ingrediente.setDisponible(disponible);
+            System.out.println("Ingrediente editado con éxito");
+        } else {
+            System.out.println("Ingrediente ingresado no existe");
+        }
+    }
+
+    
+    public void editarReceta(int codigo, String nuevoNombre, float nuevaDuracion, float nuevaPorcion, String nuevaEtiqueta, Dificultad nuevaDificultad) {
+        Receta receta = obtenerReceta(codigo);
+        if (receta != null) {
+            receta.setNombre(nuevoNombre);
+            receta.setDuracion(nuevaDuracion);
+            receta.setPorcion(nuevaPorcion);
+            receta.setEtiqueta(nuevaEtiqueta);
+            receta.setDificultad(nuevaDificultad);
+            System.out.println("Receta editada con éxito");
+        } else {
+            System.out.println("Receta ingresada no existe");
+        }
+    }
+    
+    
+    public void editarUtensilio(int codigoUtensilio, String nuevoNombre, boolean disponible) {
+    Utensilio utensilio = obtenerUtensilio(codigoUtensilio);
+        if (utensilio != null) {
+            utensilio.setNombre(nuevoNombre);
+            utensilio.setDisponible(disponible);
+            System.out.println("Utensilio editado con éxito");
+        } else {
+            System.out.println("Utensilio ingresado no existe");
+        }
+    }
+    
 }

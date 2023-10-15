@@ -43,6 +43,16 @@ public class RecetaInterfaz extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog((null), mensaje, "Ingrediente agregado con exito" + titulo, javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
     }
+    
+    public void actualizarListaIngredientes() {
+        recetaListModel.clear(); // Limpia el modelo actual
+
+        // Agrega los elementos del ArrayList de ingredientes al modelo de la lista
+        for (String receta : recetario.verListaRecetas()) {
+            recetaListModel.addElement(receta);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,10 +66,10 @@ public class RecetaInterfaz extends javax.swing.JDialog {
         tituloLabel = new javax.swing.JLabel();
         AgregarBtn = new javax.swing.JButton();
         EliminarBtn = new javax.swing.JButton();
-        EditarBtn = new javax.swing.JButton();
         VerBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        EditarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -87,8 +97,6 @@ public class RecetaInterfaz extends javax.swing.JDialog {
             }
         });
 
-        EditarBtn.setText("Editar");
-
         VerBtn.setText("Ver");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -97,6 +105,13 @@ public class RecetaInterfaz extends javax.swing.JDialog {
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(jList1);
+
+        EditarBtn.setText("Editar");
+        EditarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,8 +126,8 @@ public class RecetaInterfaz extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EliminarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AgregarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EditarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(VerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(VerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EditarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,16 +143,17 @@ public class RecetaInterfaz extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(AtrasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(AgregarBtn)
                         .addGap(18, 18, 18)
                         .addComponent(EliminarBtn)
                         .addGap(18, 18, 18)
                         .addComponent(EditarBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(VerBtn))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(AtrasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(VerBtn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -151,12 +167,27 @@ public class RecetaInterfaz extends javax.swing.JDialog {
     private void AgregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarBtnActionPerformed
         AgregarReceta a = new AgregarReceta(null, true);
         a.setVisible(true);
+        
+        //actualizo la lista luego de agregar una receta
+        actualizarListaIngredientes();
+        actualizarListaIngredientes();
     }//GEN-LAST:event_AgregarBtnActionPerformed
 
     private void EliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarBtnActionPerformed
         EliminarReceta a = new EliminarReceta(null, true);
         a.setVisible(true);
+        
+        //actualizo la lista luego de eliminar una receta
+        actualizarListaIngredientes();
     }//GEN-LAST:event_EliminarBtnActionPerformed
+
+    private void EditarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarBtnActionPerformed
+        EditarReceta a = new EditarReceta(null, true);
+        a.setVisible(true);
+        
+        //actualizo la lista luego de editar una receta
+        actualizarListaIngredientes();
+    }//GEN-LAST:event_EditarBtnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -33,6 +33,10 @@ public class Ingrediente {
         return nombre;
     }
     
+    public void setNombre(String nuevoNombre) {
+        this.nombre = nuevoNombre;
+    }
+    
     public int getCodigo() {
         return codigo;
     }

@@ -10,12 +10,12 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author JP113
  */
-public class AgregarReceta extends javax.swing.JDialog {
+public class EditarReceta extends javax.swing.JDialog {
 
     /**
-     * Creates new form AgregarReceta
+     * Creates new form EditarReceta
      */
-    public AgregarReceta(java.awt.Frame parent, boolean modal) {
+    public EditarReceta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
@@ -25,15 +25,16 @@ public class AgregarReceta extends javax.swing.JDialog {
     }
 
     public static void SuccessBox(String mensaje, String titulo) {
-                //Esta funcion es para que salte un mensaje de confirmacion en caso de que se agregue el ingrediente
-                javax.swing.JOptionPane.showMessageDialog((null), mensaje, "Ingrediente agregado con exito" + titulo, javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        }
+            //Esta funcion es para que salte un mensaje de confirmacion en caso de que se agregue el ingrediente
+            javax.swing.JOptionPane.showMessageDialog((null), mensaje, "Ingrediente agregado con exito" + titulo, javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }
     
     public static void FailBox(String mensaje, String titulo) {
             //Esta funcion es para que salte un mensaje de error en caso de que se falle algo
             javax.swing.JOptionPane.showMessageDialog((null), mensaje, "Ingrediente agregado con exito" + titulo, javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-    }
+    } 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,43 +44,41 @@ public class AgregarReceta extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CancelarBtn = new javax.swing.JButton();
-        NombreField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        DuracionField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        PorcionField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         EtiquetaField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         AgregarBtn = new javax.swing.JButton();
+        CancelarBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        NombreField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        DuracionField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        PorcionField = new javax.swing.JTextField();
+        jSpinner1 = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel3.setText("Porcion nueva que tendra la receta:");
+
+        jLabel4.setText("Etiqueta nueva que tendra la receta:");
+
+        jLabel5.setText("Dificultad nueva que tendra la receta:");
+
+        AgregarBtn.setText("Editar");
+        AgregarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarBtnActionPerformed(evt);
+            }
+        });
 
         CancelarBtn.setText("Cancelar");
         CancelarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarBtnActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Nombre:");
-
-        jLabel2.setText("Duracion:");
-
-        jLabel3.setText("Porcion:");
-
-        jLabel4.setText("Etiqueta:");
-
-        jLabel5.setText("Dificultad:");
-
-        AgregarBtn.setText("Agregar");
-        AgregarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarBtnActionPerformed(evt);
             }
         });
 
@@ -89,44 +88,59 @@ public class AgregarReceta extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setText("Nombre nuevo que tendra la receta:");
+
+        jLabel2.setText("Duracion nueva que tendra la receta:");
+
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel6.setText("Ingrese los datos de la nueva receta");
+        jLabel6.setText("Ingrese los datos de la receta que desea editar");
+
+        jLabel7.setText("Codigo de la receta que desea editar:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(CancelarBtn)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                            .addComponent(AgregarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(PorcionField)
-                                .addComponent(DuracionField)
-                                .addComponent(NombreField)
-                                .addComponent(EtiquetaField)
-                                .addComponent(jComboBox1, 0, 124, Short.MAX_VALUE))))
-                    .addComponent(jLabel6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(CancelarBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(AgregarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(PorcionField)
+                                    .addComponent(DuracionField)
+                                    .addComponent(NombreField)
+                                    .addComponent(EtiquetaField)
+                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -146,7 +160,7 @@ public class AgregarReceta extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(CancelarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -158,15 +172,11 @@ public class AgregarReceta extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CancelarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarBtnActionPerformed
-        dispose(); //cierra esta ventana unicamente, no el proyecto
-    }//GEN-LAST:event_CancelarBtnActionPerformed
-
     private void AgregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarBtnActionPerformed
 
-        try {   
+        try {
             String nombre = NombreField.getText();
-
+            int codigo = (int) jSpinner1.getValue();
             String duracion = DuracionField.getText();
             String porcion = PorcionField.getText();
             String etiqueta = EtiquetaField.getText();
@@ -175,18 +185,27 @@ public class AgregarReceta extends javax.swing.JDialog {
                 float valorDuracion = Float.parseFloat(duracion);
                 float valorPorcion = Float.parseFloat(porcion);
                 Dificultad dificultad = (Dificultad) jComboBox1.getSelectedItem();
-                
                 Recetario recetario = Recetario.getInstancia();
-                recetario.agregarReceta(nombre, valorDuracion, valorPorcion, etiqueta, dificultad);
+
+                if (recetario.existeReceta(codigo)){
+                recetario.editarReceta(codigo,nombre, valorDuracion, valorPorcion, etiqueta, dificultad);
                 SuccessBox("Se ha agregado la receta con éxito", "");
                 dispose(); // Cierra esta ventana únicamente, no el proyecto
+                }
+                else {
+                    FailBox("Receta no encontrada", "");
+                }
             } else {
                 FailBox("Por favor, complete todos los campos con valores válidos", "");
             }
         } catch (NumberFormatException e)  {
-            FailBox("Por favor, rellene los cuadros con valores válidos", ""); 
+            FailBox("Por favor, rellene los cuadros con valores válidos", "");
         }
     }//GEN-LAST:event_AgregarBtnActionPerformed
+
+    private void CancelarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarBtnActionPerformed
+        dispose(); //cierra esta ventana unicamente, no el proyecto
+    }//GEN-LAST:event_CancelarBtnActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -209,20 +228,20 @@ public class AgregarReceta extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarReceta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AgregarReceta dialog = new AgregarReceta(new javax.swing.JFrame(), true);
+                EditarReceta dialog = new EditarReceta(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -248,5 +267,7 @@ public class AgregarReceta extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 }

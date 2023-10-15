@@ -31,14 +31,31 @@ public class Receta { // clase receta con sus atributos
         return etiqueta;
     }
 
-    public void setEtiqueta(String etiqueta) {
-        this.etiqueta = etiqueta;
+    public void setNombre(String nuevoNombre) {
+        this.nombre = nuevoNombre;
+    }
+
+    public void setDuracion(float nuevaDuracion) {
+        this.duracion = nuevaDuracion;
+    }
+
+    public void setPorcion(float nuevaPorcion) {
+        this.porcion = nuevaPorcion;
+    }
+
+    public void setEtiqueta(String nuevaEtiqueta) {
+        this.etiqueta = nuevaEtiqueta;
+    }
+
+    public void setDificultad(Dificultad nuevaDificultad) {
+        this.dificultad = nuevaDificultad;
     }
     
     public String toString(){
         return "Nombre: " + nombre + " " +
-                "Duración: " + duracion + " " + 
-                "Porción: " + porcion + " " + 
-                "Dificultad: " + dificultad ;
+                ", Duración: " + duracion + " " + 
+                ", Porción: " + porcion + " " +
+                ", Codigo: " + codigo +
+                ", Dificultad: " + dificultad ;
     }
 }

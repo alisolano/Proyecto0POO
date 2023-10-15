@@ -33,6 +33,15 @@ public class AlacenaInterfaz extends javax.swing.JDialog {
         }
     }
 
+    public void actualizarListaIngredientes() {
+        ingredientListModel.clear(); // Limpia el modelo actual
+
+        // Agrega los elementos del ArrayList de ingredientes al modelo de la lista
+        for (String ingrediente : recetario.verListaIngredientes()) {
+            ingredientListModel.addElement(ingrediente);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,6 +93,11 @@ public class AlacenaInterfaz extends javax.swing.JDialog {
         });
 
         jButton3.setText("Editar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,7 +126,7 @@ public class AlacenaInterfaz extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,12 +153,25 @@ public class AlacenaInterfaz extends javax.swing.JDialog {
         AgregarIngredientes a = new AgregarIngredientes(null, true);
         a.setVisible(true);
         
+        //actualiza la lista luego de agregar un ingrediente
+        actualizarListaIngredientes();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         EliminarIngredientes a = new EliminarIngredientes(null, true);
         a.setVisible(true);
+        
+        //actualiza la lista luego de eliminar un ingrediente
+        actualizarListaIngredientes();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        EditarIngredientes a = new EditarIngredientes(null, true);
+        a.setVisible(true);
+        
+        //actualiza la lista luego de editar un ingrediente
+        actualizarListaIngredientes();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
