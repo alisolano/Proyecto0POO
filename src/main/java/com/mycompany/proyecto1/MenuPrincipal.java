@@ -29,8 +29,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         tituloLabel = new javax.swing.JLabel();
         recetasBtn = new javax.swing.JButton();
         alacenaBtn = new javax.swing.JButton();
-        utensiliosBtn = new javax.swing.JButton();
+        cocinarBtn = new javax.swing.JButton();
         CerrarBtn = new javax.swing.JButton();
+        utensiliosBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,11 +54,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        utensiliosBtn.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        utensiliosBtn.setText("Utensilios");
-        utensiliosBtn.addActionListener(new java.awt.event.ActionListener() {
+        cocinarBtn.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        cocinarBtn.setText("¿Que cocinar?");
+        cocinarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                utensiliosBtnActionPerformed(evt);
+                cocinarBtnActionPerformed(evt);
             }
         });
 
@@ -68,6 +69,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        utensiliosBtn.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        utensiliosBtn.setText("Utensilios");
+        utensiliosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                utensiliosBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,31 +84,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(alacenaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(recetasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(utensiliosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(tituloLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(CerrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addComponent(CerrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(recetasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cocinarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(alacenaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(utensiliosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(tituloLabel)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(cocinarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
                 .addComponent(recetasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(44, 44, 44)
                 .addComponent(alacenaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
                 .addComponent(utensiliosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(1, 1, 1)
                 .addComponent(CerrarBtn)
                 .addContainerGap())
         );
@@ -117,14 +129,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         a.setVisible(true);
     }//GEN-LAST:event_alacenaBtnActionPerformed
 
-    private void utensiliosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utensiliosBtnActionPerformed
-        UtensilioInterfaz u = new UtensilioInterfaz(this, true);
-        u.setVisible(true);
-    }//GEN-LAST:event_utensiliosBtnActionPerformed
+    private void cocinarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cocinarBtnActionPerformed
+        QueCocinarInterfaz a = new QueCocinarInterfaz(this, true);
+        a.setVisible(true);
+    }//GEN-LAST:event_cocinarBtnActionPerformed
 
     private void CerrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarBtnActionPerformed
         dispose(); //cierra esta ventana unicamente, aunque al ser la principal ahora si cierra el proyecto
     }//GEN-LAST:event_CerrarBtnActionPerformed
+
+    private void utensiliosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utensiliosBtnActionPerformed
+        UtensilioInterfaz u = new UtensilioInterfaz(this, true);
+        u.setVisible(true);    }//GEN-LAST:event_utensiliosBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,6 +180,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CerrarBtn;
     private javax.swing.JButton alacenaBtn;
+    private javax.swing.JButton cocinarBtn;
     private javax.swing.JButton recetasBtn;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JButton utensiliosBtn;

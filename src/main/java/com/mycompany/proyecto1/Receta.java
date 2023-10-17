@@ -4,29 +4,21 @@ public class Receta { // clase receta con sus atributos
     private String nombre;
     public static int consecutivo = 0;
     private int codigo;
-    private float duracion;
+    private Tiempo tiempo;
     private float porcion;
     private String etiqueta;
     private Dificultad dificultad;
 
-    public Receta(String nombre, float duracion, float porcion, String etiqueta, Dificultad dificultad) {
+    public Receta(String nombre, Tiempo tiempo, float porcion, String etiqueta, Dificultad dificultad) {
         consecutivo++;
         this.nombre = nombre;
         this.codigo = consecutivo;
-        this.duracion = duracion;
+        this.tiempo = tiempo; 
         this.porcion = porcion;
         this.etiqueta = etiqueta;
         this.dificultad = dificultad;
     }
     
-    public void editarReceta(String nombre, float duracion, float porcion){
-        this.nombre = nombre;
-        this.duracion = duracion;
-        this.porcion = porcion;
-        
-    
-    }
-
     public String getEtiqueta() {
         return etiqueta;
     }
@@ -35,10 +27,22 @@ public class Receta { // clase receta con sus atributos
         this.nombre = nuevoNombre;
     }
 
-    public void setDuracion(float nuevaDuracion) {
-        this.duracion = nuevaDuracion;
+    public void setDuracion(Tiempo nuevaDuracion) {
+        this.tiempo = nuevaDuracion;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public Tiempo getDuracion() {
+        return tiempo;
     }
 
+    public Dificultad getDificultad() {
+        return dificultad;
+    }
+    
     public void setPorcion(float nuevaPorcion) {
         this.porcion = nuevaPorcion;
     }
@@ -53,7 +57,7 @@ public class Receta { // clase receta con sus atributos
     
     public String toString(){
         return "Nombre: " + nombre + " " +
-                ", Duración: " + duracion + " " + 
+                ", Duración: " + tiempo + " " + 
                 ", Porción: " + porcion + " " +
                 ", Codigo: " + codigo +
                 ", Dificultad: " + dificultad ;

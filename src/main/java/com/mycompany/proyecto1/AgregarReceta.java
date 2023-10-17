@@ -22,6 +22,10 @@ public class AgregarReceta extends javax.swing.JDialog {
         Dificultad[] opciones = Dificultad.values();
         DefaultComboBoxModel<Dificultad> model = new DefaultComboBoxModel<>(opciones);
         jComboBox1.setModel(model);
+        
+        Tiempo[] opciones2 = Tiempo.values();
+        DefaultComboBoxModel<Tiempo> model2 = new DefaultComboBoxModel<>(opciones2);
+        jComboBox2.setModel(model2);
     }
 
     public static void SuccessBox(String mensaje, String titulo) {
@@ -46,7 +50,6 @@ public class AgregarReceta extends javax.swing.JDialog {
         CancelarBtn = new javax.swing.JButton();
         NombreField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        DuracionField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         PorcionField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -56,6 +59,7 @@ public class AgregarReceta extends javax.swing.JDialog {
         AgregarBtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,6 +96,12 @@ public class AgregarReceta extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel6.setText("Ingrese los datos de la nueva receta");
 
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,10 +124,10 @@ public class AgregarReceta extends javax.swing.JDialog {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(PorcionField)
-                                .addComponent(DuracionField)
                                 .addComponent(NombreField)
                                 .addComponent(EtiquetaField)
-                                .addComponent(jComboBox1, 0, 124, Short.MAX_VALUE))))
+                                .addComponent(jComboBox1, 0, 124, Short.MAX_VALUE)
+                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jLabel6))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -126,14 +136,14 @@ public class AgregarReceta extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DuracionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PorcionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,18 +176,16 @@ public class AgregarReceta extends javax.swing.JDialog {
 
         try {   
             String nombre = NombreField.getText();
-
-            String duracion = DuracionField.getText();
             String porcion = PorcionField.getText();
             String etiqueta = EtiquetaField.getText();
 
-            if (!nombre.isEmpty() && !duracion.isEmpty() && !porcion.isEmpty() && !etiqueta.isEmpty()) {
-                float valorDuracion = Float.parseFloat(duracion);
+            if (!nombre.isEmpty() && !porcion.isEmpty() && !etiqueta.isEmpty()) {
                 float valorPorcion = Float.parseFloat(porcion);
                 Dificultad dificultad = (Dificultad) jComboBox1.getSelectedItem();
+                Tiempo tiempo = (Tiempo) jComboBox2.getSelectedItem();
                 
                 Recetario recetario = Recetario.getInstancia();
-                recetario.agregarReceta(nombre, valorDuracion, valorPorcion, etiqueta, dificultad);
+                recetario.agregarReceta(nombre, tiempo, valorPorcion, etiqueta, dificultad);
                 SuccessBox("Se ha agregado la receta con éxito", "");
                 dispose(); // Cierra esta ventana únicamente, no el proyecto
             } else {
@@ -191,6 +199,10 @@ public class AgregarReceta extends javax.swing.JDialog {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,11 +249,11 @@ public class AgregarReceta extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarBtn;
     private javax.swing.JButton CancelarBtn;
-    private javax.swing.JTextField DuracionField;
     private javax.swing.JTextField EtiquetaField;
     private javax.swing.JTextField NombreField;
     private javax.swing.JTextField PorcionField;
     private javax.swing.JComboBox<Dificultad> jComboBox1;
+    private javax.swing.JComboBox<Tiempo> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

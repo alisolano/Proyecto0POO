@@ -23,7 +23,7 @@ public class RecetaInterfaz extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-                // Inicializar el modelo de la lista
+        // Inicializar el modelo de la lista
         recetaListModel = new DefaultListModel<>();
         jList1.setModel(recetaListModel);
 

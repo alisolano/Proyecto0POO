@@ -45,11 +45,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="PorcionField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="DuracionField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="NombreField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="EtiquetaField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jSpinner1" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                  <Component id="jSpinner1" alignment="0" pref="124" max="32767" attributes="0"/>
+                                  <Component id="jComboBox2" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -68,7 +68,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jSpinner1" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -80,8 +80,8 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="DuracionField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -165,8 +165,6 @@
         <Property name="text" type="java.lang.String" value="Nombre nuevo que tendra la receta:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="DuracionField">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Duracion nueva que tendra la receta:"/>
@@ -188,6 +186,16 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Codigo de la receta que desea editar:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox2">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Tiempo&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

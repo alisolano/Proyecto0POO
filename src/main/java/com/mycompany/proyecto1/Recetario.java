@@ -10,11 +10,13 @@ public class Recetario {
     private ArrayList<Receta> recetas;
     private ArrayList<Utensilio> utensilios;
     private ArrayList<Ingrediente> ingredientes;
+    private ArrayList<String> etiquetas = new ArrayList<>();
     
     public Recetario() {
         this.recetas = new ArrayList<>();
         this.utensilios = new ArrayList<>();
         this.ingredientes = new ArrayList<>();
+        this.etiquetas = new ArrayList<>();
     }
     
     // Metodo para obtener la instancia unica de recetario, funiona para llamar los metodos en las interfacez
@@ -66,10 +68,15 @@ public class Recetario {
     }
     
     
-    public void agregarReceta(String nombre, float duracion, float porcion, String etiqueta, Dificultad dificultad){
-        Receta recetaNueva = new Receta(nombre, duracion, porcion, etiqueta, dificultad);
+    public void agregarReceta(String nombre, Tiempo tiempo, float porcion, String etiqueta, Dificultad dificultad){
+        Receta recetaNueva = new Receta(nombre, tiempo, porcion, etiqueta, dificultad);
         recetas.add(recetaNueva);
+        etiquetas.add(etiqueta);
     }
+
+    public ArrayList<String> getEtiquetas() {
+        return etiquetas;
+    }    
     
     public ArrayList<String> verListaRecetas(){
         ArrayList<String> listaRecetas = new ArrayList<>();
@@ -142,22 +149,18 @@ public class Recetario {
         }
     }
         
-    /*
-    
-    public ArrayList<Receta> filtrarRecetas(float duracion, Dificultad dificultad, String etiqueta) {
+    public ArrayList<Receta> filtrarRecetas(Tiempo duracion, Dificultad dificultad, String etiqueta) {
         ArrayList<Receta> recetasFiltradas = new ArrayList<>();
         for (Receta r : recetas) {
             //ver si cumple los requisitos
-            if (r.getDuracion() <= duracion && r.getDificultad() == dificultad && r.getEtiqueta().equals(etiqueta)) {
+            if (r.getDuracion() == duracion && r.getDificultad() == dificultad && r.getEtiqueta().equals(etiqueta)) {
                 recetasFiltradas.add(r);
             }
         }
         return recetasFiltradas;
     }
     
-    public ArrayList<Receta> ordenarRecetas 
-    
-    */
+    public ArrayList<Receta> ordenarRecetas;
   
     
     public boolean existeIngrediente(int codigoIngrediente) {
@@ -185,12 +188,12 @@ public class Recetario {
     }
 
     
-    public void editarReceta(int codigo, String nuevoNombre, float nuevaDuracion, float nuevaPorcion, String nuevaEtiqueta, Dificultad nuevaDificultad) {
+    public void editarReceta(int codigo, String nuevoNombre, Tiempo nuevaDuracion, float nuevaPorcion, String nuevaEtiqueta, Dificultad nuevaDificultad) {
         Receta receta = obtenerReceta(codigo);
         if (receta != null) {
             receta.setNombre(nuevoNombre);
             receta.setDuracion(nuevaDuracion);
-            receta.setPorcion(nuevaPorcion);
+            receta.setPorcion(nuevaPorcion);            
             receta.setEtiqueta(nuevaEtiqueta);
             receta.setDificultad(nuevaDificultad);
             System.out.println("Receta editada con éxito");
