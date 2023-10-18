@@ -1,6 +1,8 @@
 package com.mycompany.proyecto1;
 
 import java.io.Serializable;
+//Descripcion: La clase ingredientes puede puede editar,
+//y ver disponibles, esto para luego relacionar la clase con su interfaz. 
 
 public class Ingrediente implements Serializable{
     

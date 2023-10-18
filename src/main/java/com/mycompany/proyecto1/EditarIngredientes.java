@@ -20,6 +20,7 @@ public class EditarIngredientes extends javax.swing.JDialog {
     public EditarIngredientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         EditarBtn.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
         EditarBtnActionPerformed(evt);

@@ -8,6 +8,7 @@ package com.mycompany.proyecto1;
  *
  * @author JP113
  */
+//
 //Prueba
 public class AgregarIngredientes extends javax.swing.JDialog {
 
@@ -17,6 +18,7 @@ public class AgregarIngredientes extends javax.swing.JDialog {
     public AgregarIngredientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public static void SuccessBox(String mensaje, String titulo) {

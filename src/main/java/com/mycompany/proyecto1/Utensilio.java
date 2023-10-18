@@ -1,6 +1,9 @@
 package com.mycompany.proyecto1;
 
 import java.io.Serializable;
+//Descripcion: La clase utensilio siempre necesita una receta, 
+//y de esta puede editar, y ver disponibles, esto para luego
+//relacionar la clase con su interfaz.
 
 public class Utensilio implements Serializable{
     private String nombre;

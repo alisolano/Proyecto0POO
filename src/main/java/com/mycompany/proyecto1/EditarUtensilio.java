@@ -18,6 +18,7 @@ public class EditarUtensilio extends javax.swing.JDialog {
     public EditarUtensilio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public static void SuccessBox(String mensaje, String titulo) {

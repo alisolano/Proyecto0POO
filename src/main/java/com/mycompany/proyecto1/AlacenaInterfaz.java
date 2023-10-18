@@ -22,6 +22,7 @@ public class AlacenaInterfaz extends javax.swing.JDialog {
     public AlacenaInterfaz(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
 
         // Inicializar el modelo de la lista
         ingredientListModel = new DefaultListModel<>();

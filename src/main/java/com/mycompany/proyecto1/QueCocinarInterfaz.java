@@ -7,6 +7,7 @@ package com.mycompany.proyecto1;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import java.util.ArrayList;  // Asegúrate de importar java.util.ArrayList
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +25,7 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
     public QueCocinarInterfaz(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         
         // Inicializar el modelo de la lista
         recetaListModel = new DefaultListModel<>();
@@ -84,6 +86,9 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
         CancelarBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jSpinner1 = new javax.swing.JSpinner();
+        jLabel6 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,6 +148,15 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
             }
         });
 
+        jButton1.setText("Ver Receta mas a detalle");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Ingrese el codigo de la receta que desea ver mas a detalle");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,27 +181,30 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(64, 64, 64))
+                        .addGap(58, 58, 58))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(167, 167, 167)
+                                .addComponent(jLabel5)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(CancelarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jLabel5)))
-                .addContainerGap(177, Short.MAX_VALUE))
+                        .addComponent(CancelarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 166, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel5)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -207,8 +224,14 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(CancelarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CancelarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18))
         );
 
@@ -244,6 +267,30 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
             recetaListModel.addElement(receta.getNombre()); // Asumiendo que el método getNombre devuelve el nombre de la receta
         }
     }//GEN-LAST:event_filtrarBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    int codigo = (int) jSpinner1.getValue();
+
+        if (recetario.existeReceta(codigo)) {
+            String recetaInfo = recetario.verRecetaDetalles(codigo);
+
+            MostrarRecetaInterfaz mostrarReceta = new MostrarRecetaInterfaz(null, true);
+
+            // Establece el texto en un componente de texto (puedes usar un JTextArea o JLabel, dependiendo de tus necesidades)
+            
+            mostrarReceta.jTextArea1.setLineWrap(true);
+            mostrarReceta.jTextArea1.setWrapStyleWord(true);
+            mostrarReceta.jTextArea1.setText(recetaInfo);
+
+            // Muestra la nueva ventana
+            mostrarReceta.setVisible(true);
+        } else {
+            // Manejo de error si la receta no se encuentra
+            JOptionPane.showMessageDialog(this, "Receta no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,6 +337,7 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelarBtn;
     private javax.swing.JButton filtrarBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<Tiempo> jComboBox1;
     private javax.swing.JComboBox<Dificultad> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -298,8 +346,10 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 }
