@@ -1,6 +1,8 @@
 package com.mycompany.proyecto1;
 
-public class Receta { // clase receta con sus atributos
+import java.io.Serializable;
+
+public class Receta implements Serializable{ // clase receta con sus atributos
     private String nombre;
     public static int consecutivo = 0;
     private int codigo;

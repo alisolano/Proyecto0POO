@@ -1,5 +1,8 @@
 package com.mycompany.proyecto1;
-public class Ingrediente {
+
+import java.io.Serializable;
+
+public class Ingrediente implements Serializable{
     
     public static int consecutivo = 0;
     private int codigo;

@@ -1,5 +1,8 @@
 package com.mycompany.proyecto1;
-public class Utensilio {
+
+import java.io.Serializable;
+
+public class Utensilio implements Serializable{
     private String nombre;
     public static int consecutivo = 0;
     private int codigo;

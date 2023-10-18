@@ -1,6 +1,14 @@
 package com.mycompany.proyecto1;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 // clase controladora
 public class Recetario {
@@ -212,6 +220,87 @@ public class Recetario {
         } else {
             System.out.println("Utensilio ingresado no existe");
         }
+    }
+    public Recetario CargarDatos() throws IOException, ClassNotFoundException{
+        
+        try {
+            ObjectInputStream lecturaRecetas = new ObjectInputStream(new FileInputStream("recetas.dat") );
+            ObjectInputStream lecturaUtensilios = new ObjectInputStream(new FileInputStream("utensilios.dat") );
+            ObjectInputStream lecturaIngredientes = new ObjectInputStream(new FileInputStream("ingredientes.dat") );
+            
+            this.recetas = (ArrayList <Receta>)lecturaRecetas.readObject();
+            this.utensilios = (ArrayList <Utensilio>)lecturaUtensilios.readObject();
+            this.ingredientes = (ArrayList <Ingrediente>)lecturaIngredientes.readObject();
+            
+            lecturaRecetas.close();
+            lecturaUtensilios.close();
+            lecturaIngredientes.close();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Recetario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
+    }
+    public void GuardarDatos(){
+        try {
+            ObjectOutputStream escrituraRecetas = new ObjectOutputStream(new FileOutputStream("recetas.dat") );
+            ObjectOutputStream escrituraUtensilios = new ObjectOutputStream(new FileOutputStream("utensilios.dat") );
+            ObjectOutputStream escrituraIngredientes = new ObjectOutputStream(new FileOutputStream("ingredientes.dat") );
+            
+            escrituraRecetas.writeObject(recetas);
+            escrituraUtensilios.writeObject(utensilios);
+            escrituraIngredientes.writeObject(ingredientes);
+            
+            escrituraRecetas.flush();
+            escrituraUtensilios.flush();
+            escrituraIngredientes.flush();
+            
+            escrituraRecetas.close();
+            escrituraUtensilios.close();
+            escrituraIngredientes.close();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Recetario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Recetario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public ArrayList<Receta> getRecetas() {
+        return recetas;
+    }
+
+    public ArrayList<Utensilio> getUtensilios() {
+        return utensilios;
+    }
+
+    public ArrayList<Ingrediente> getIngredientes() {
+        return ingredientes;
+    }
+    
+ 
+    
+     @Override
+    public String toString(){
+        String res = "";
+        res+="-Recetas-\n";
+        for(Receta receta:this.recetas){
+            res+=receta.toString()+"\n";
+        }
+        res+="-Utensilios-\n";
+        for(Utensilio utensilio:this.utensilios){
+            res+=utensilio.toString()+"\n";
+        }
+        res+="-Ingredientes-\n";
+        for(Ingrediente ingrediente:this.ingredientes){
+            res+=ingrediente.toString()+"\n";
+        }
+        
+        
+        
+        return res;
+        
     }
     
 }
