@@ -68,8 +68,8 @@ public class Recetario {
     }
     
     
-    public void agregarReceta(String nombre, Tiempo tiempo, float porcion, String etiqueta, Dificultad dificultad){
-        Receta recetaNueva = new Receta(nombre, tiempo, porcion, etiqueta, dificultad);
+    public void agregarReceta(String nombre, Tiempo tiempo, float porcion, String etiqueta, Dificultad dificultad, String procedimiento){
+        Receta recetaNueva = new Receta(nombre, tiempo, porcion, etiqueta, dificultad, procedimiento);
         recetas.add(recetaNueva);
         etiquetas.add(etiqueta);
     }
@@ -94,6 +94,15 @@ public class Recetario {
             System.out.println("Receta ingresada no existe");
         }
         String recetaInfo = receta.toString();
+        return recetaInfo;
+    }
+    
+    public String verRecetaDetalles (int codigoReceta) {
+        Receta receta = obtenerReceta(codigoReceta);
+        if (receta == null){
+            System.out.println("Receta ingresada no existe");
+        }
+        String recetaInfo = receta.detalles();
         return recetaInfo;
     }
     
@@ -188,7 +197,7 @@ public class Recetario {
     }
 
     
-    public void editarReceta(int codigo, String nuevoNombre, Tiempo nuevaDuracion, float nuevaPorcion, String nuevaEtiqueta, Dificultad nuevaDificultad) {
+    public void editarReceta(int codigo, String nuevoNombre, Tiempo nuevaDuracion, float nuevaPorcion, String nuevaEtiqueta, Dificultad nuevaDificultad, String nuevoProcedimiento) {
         Receta receta = obtenerReceta(codigo);
         if (receta != null) {
             receta.setNombre(nuevoNombre);
@@ -196,6 +205,7 @@ public class Recetario {
             receta.setPorcion(nuevaPorcion);            
             receta.setEtiqueta(nuevaEtiqueta);
             receta.setDificultad(nuevaDificultad);
+            receta.setProcedimiento(nuevoProcedimiento);
             System.out.println("Receta editada con éxito");
         } else {
             System.out.println("Receta ingresada no existe");
