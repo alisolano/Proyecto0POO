@@ -17,6 +17,8 @@ public class MostrarRecetaInterfaz extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        jTextArea1.setEditable(false);
     }
 
     public static void SuccessBox(String mensaje, String titulo) {

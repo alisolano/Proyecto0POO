@@ -4,6 +4,7 @@
  */
 package com.mycompany.proyecto1.interfaz;
 import com.mycompany.proyecto1.Recetario;
+import com.mycompany.proyecto1.Utensilio;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
@@ -62,6 +63,8 @@ public class UtensilioInterfaz extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cambiarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -103,6 +106,15 @@ public class UtensilioInterfaz extends javax.swing.JDialog {
             }
         });
 
+        jLabel2.setText("Cambiar disponibilidad del utensilio seleccionado:");
+
+        cambiarBtn.setText("Cambiar");
+        cambiarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambiarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,7 +134,11 @@ public class UtensilioInterfaz extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cambiarBtn)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,11 +154,14 @@ public class UtensilioInterfaz extends javax.swing.JDialog {
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AtrasBtn)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cambiarBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(AtrasBtn)
+                .addContainerGap())
         );
 
         pack();
@@ -175,6 +194,21 @@ public class UtensilioInterfaz extends javax.swing.JDialog {
         //actualizo la lista luego de eliminar un utensilio
         actualizarListaIngredientes();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cambiarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarBtnActionPerformed
+    int selectedIndex = jList1.getSelectedIndex();
+
+    if (selectedIndex != -1) {
+        Utensilio utensilioSeleccionado = recetario.getUtensilio(selectedIndex);
+
+        if (utensilioSeleccionado != null) {
+            utensilioSeleccionado.cambiarDisponibilidad();
+            utensilioListModel.set(selectedIndex, utensilioSeleccionado.getNombre() + (utensilioSeleccionado.isDisponibleUtensilio() ? " (Disponible)" : " (No disponible)"));
+
+            actualizarListaIngredientes();
+        }
+    }
+    }//GEN-LAST:event_cambiarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,10 +254,12 @@ public class UtensilioInterfaz extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AtrasBtn;
+    private javax.swing.JButton cambiarBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

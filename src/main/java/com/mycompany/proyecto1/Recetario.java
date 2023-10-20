@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -79,8 +80,8 @@ public class Recetario {
     }
     
     
-    public void agregarReceta(String nombre, Tiempo tiempo, float porcion, String etiqueta, Dificultad dificultad, String procedimiento){
-        Receta recetaNueva = new Receta(nombre, tiempo, porcion, etiqueta, dificultad, procedimiento);
+    public void agregarReceta(String nombre, Tiempo tiempo, float porcion, String etiqueta, Dificultad dificultad, String procedimiento, List utensilio, List ingrediente){
+        Receta recetaNueva = new Receta(nombre, tiempo, porcion, etiqueta, dificultad, procedimiento, utensilio, ingrediente);
         recetas.add(recetaNueva);
         etiquetas.add(etiqueta);
     }
@@ -255,6 +256,36 @@ public class Recetario {
         return null;
         
     }
+    
+    
+    public Utensilio getUtensilio(int index) {
+        if (index >= 0 && index < utensilios.size()) {
+            return utensilios.get(index);
+        }
+        return null; // Devuelve null si el índice está fuera de rango
+    }
+    
+    public Ingrediente getIngrediente(int index) {
+        if (index >= 0 && index < ingredientes.size()) {
+            return ingredientes.get(index);
+        }
+        return null; // Devuelve null si el índice está fuera de rango
+    }
+    
+    public boolean isDisponibleUtensilio(Utensilio utensilio) {
+        if (utensilio != null) {
+            return utensilio.isDisponibleUtensilio();
+        }
+        return false; // Devuelve false si el utensilio es nulo
+    }
+    
+    public boolean isDisponibleIngrediente(Ingrediente ingrediente) {
+        if (ingrediente != null) {
+            return ingrediente.isDisponibleIngrediente();
+        }
+        return false; // Devuelve false si el utensilio es nulo
+    }
+    
     public void GuardarDatos(){
         try {
             ObjectOutputStream escrituraRecetas = new ObjectOutputStream(new FileOutputStream("recetas.dat") );

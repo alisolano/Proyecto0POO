@@ -54,6 +54,14 @@ public class Ingrediente implements Serializable{
         this.disponible = disponible;
     }
     
+    public boolean isDisponibleIngrediente() {
+        return disponible;
+    }
+    
+    public void cambiarDisponibilidad() {
+        disponible = !disponible; // Cambia la disponibilidad (true a false o false a true)
+    }
+    
     public String toString() {
         return 
                "Nombre: " + nombre +

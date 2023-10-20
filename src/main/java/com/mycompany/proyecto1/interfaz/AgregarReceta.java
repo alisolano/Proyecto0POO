@@ -7,13 +7,11 @@ package com.mycompany.proyecto1.interfaz;
 import com.mycompany.proyecto1.Dificultad;
 import com.mycompany.proyecto1.Recetario;
 import com.mycompany.proyecto1.Tiempo;
-import com.mycompany.proyecto1.Utensilio;
-import java.awt.Frame;
 import java.util.ArrayList;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.SwingUtilities;
+import java.util.List;
+
 
 /**
  *
@@ -48,7 +46,7 @@ public class AgregarReceta extends javax.swing.JDialog {
  
         // Inicializa el modelo de la lista de ingredientes seleccionados
         ingredientesSeleccionadosModel = new DefaultListModel<>();
-        jList1.setModel(ingredientesSeleccionadosModel);
+        ingredienteList.setModel(ingredientesSeleccionadosModel);
 
         // Llenar el ComboBox de ingredientes
         DefaultComboBoxModel<String> ingredientesModel = new DefaultComboBoxModel<>();
@@ -114,12 +112,12 @@ public class AgregarReceta extends javax.swing.JDialog {
         ProcedimientoField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        ingredienteList = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        utensilioList = new javax.swing.JList<>();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jComboBox3 = new javax.swing.JComboBox<>();
@@ -183,7 +181,7 @@ public class AgregarReceta extends javax.swing.JDialog {
 
         jLabel8.setText("Ingredientes");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(ingredienteList);
 
         jButton1.setText("+");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +194,7 @@ public class AgregarReceta extends javax.swing.JDialog {
 
         jLabel9.setText("Utensilios");
 
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(utensilioList);
 
         jButton3.setText("+");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -374,8 +372,23 @@ public class AgregarReceta extends javax.swing.JDialog {
                 Dificultad dificultad = (Dificultad) jComboBox1.getSelectedItem();
                 Tiempo tiempo = (Tiempo) jComboBox2.getSelectedItem();
                 
+                DefaultListModel<String> utensiliosModel = (DefaultListModel<String>) utensilioList.getModel();
+                List<String> utensiliosSeleccionados = new ArrayList<>();
+
+                for (int i = 0; i < utensiliosModel.size(); i++) {
+                    utensiliosSeleccionados.add(utensiliosModel.getElementAt(i));
+}
+                
+                
+                DefaultListModel<String> ingredientesModel = (DefaultListModel<String>) ingredienteList.getModel();
+                List<String> ingredientesSeleccionados = new ArrayList<>();
+
+                for (int i = 0; i < ingredientesModel.size(); i++) {
+                    ingredientesSeleccionados.add(ingredientesModel.getElementAt(i));
+}
+                         
                 Recetario recetario = Recetario.getInstancia();
-                recetario.agregarReceta(nombre, tiempo, valorPorcion, etiqueta, dificultad, procedimiento);
+                recetario.agregarReceta(nombre, tiempo, valorPorcion, etiqueta, dificultad, procedimiento, utensiliosSeleccionados, ingredientesSeleccionados);
                 SuccessBox("Se ha agregado la receta con éxito", "");
                 dispose(); // Cierra esta ventana únicamente, no el proyecto
             } else {
@@ -428,7 +441,7 @@ public class AgregarReceta extends javax.swing.JDialog {
             for (String utensilio : utensiliosSeleccionados) {
                 utensiliosListModel.addElement(utensilio);
             }
-            jList2.setModel(utensiliosListModel);
+            utensilioList.setModel(utensiliosListModel);
 
             jComboBox3.setSelectedIndex(0);
         }
@@ -491,6 +504,7 @@ public class AgregarReceta extends javax.swing.JDialog {
     private javax.swing.JTextField NombreField;
     private javax.swing.JTextField PorcionField;
     private javax.swing.JTextField ProcedimientoField;
+    private javax.swing.JList<String> ingredienteList;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -508,10 +522,9 @@ public class AgregarReceta extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JList<String> utensilioList;
     // End of variables declaration//GEN-END:variables
 }

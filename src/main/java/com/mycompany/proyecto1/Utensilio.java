@@ -26,12 +26,24 @@ public class Utensilio implements Serializable{
         return disponible;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+    
     public void setNombre(String nuevoNombre) {
         this.nombre = nuevoNombre;
     }
     
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
+    }
+    
+    public void cambiarDisponibilidad() {
+        disponible = !disponible; // Cambia la disponibilidad (true a false o false a true)
+    }
+    
+    public boolean isDisponibleUtensilio() {
+        return disponible;
     }
     
     public String toString(){

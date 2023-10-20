@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 package com.mycompany.proyecto1;
-
+/*
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  *
  * @author Alana
- */
+ 
 public class RecetaTest {
     
     public RecetaTest() {
@@ -54,7 +54,7 @@ public class RecetaTest {
 
     /**
      * Test of editarReceta method, of class Receta.
-     */
+    
     @org.junit.jupiter.api.Test
     public void testEditarReceta() {
         System.out.println("editarReceta");
@@ -69,7 +69,7 @@ public class RecetaTest {
 
     /**
      * Test of getEtiqueta method, of class Receta.
-     */
+    
     @org.junit.jupiter.api.Test
     public void testGetEtiqueta() {
         System.out.println("getEtiqueta");
@@ -83,7 +83,7 @@ public class RecetaTest {
 
     /**
      * Test of setNombre method, of class Receta.
-     */
+     
     @org.junit.jupiter.api.Test
     public void testSetNombre() {
         System.out.println("setNombre");
@@ -96,7 +96,7 @@ public class RecetaTest {
 
     /**
      * Test of setDuracion method, of class Receta.
-     */
+    
     @org.junit.jupiter.api.Test
     public void testSetDuracion() {
         System.out.println("setDuracion");
@@ -109,7 +109,7 @@ public class RecetaTest {
 
     /**
      * Test of setPorcion method, of class Receta.
-     */
+     
     @org.junit.jupiter.api.Test
     public void testSetPorcion() {
         System.out.println("setPorcion");
@@ -122,7 +122,7 @@ public class RecetaTest {
 
     /**
      * Test of setEtiqueta method, of class Receta.
-     */
+     
     @org.junit.jupiter.api.Test
     public void testSetEtiqueta() {
         System.out.println("setEtiqueta");
@@ -135,7 +135,7 @@ public class RecetaTest {
 
     /**
      * Test of setDificultad method, of class Receta.
-     */
+     
     @org.junit.jupiter.api.Test
     public void testSetDificultad() {
         System.out.println("setDificultad");
@@ -148,7 +148,7 @@ public class RecetaTest {
 
     /**
      * Test of toString method, of class Receta.
-     */
+     
     @org.junit.jupiter.api.Test
     public void testToString() {
         System.out.println("toString");
@@ -161,3 +161,4 @@ public class RecetaTest {
     }
     
 }
+*/

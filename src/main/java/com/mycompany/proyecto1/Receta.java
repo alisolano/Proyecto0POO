@@ -1,6 +1,7 @@
 package com.mycompany.proyecto1;
 
 import java.io.Serializable;
+import java.util.List;
 //Descripcion: La clase receta posee una relación con la clase utensilo,
 //Esta posee tiempo, difucultad, porción y etiqute que eventualmente
 //Será relaciona con su infertaz, para luego colocar en la iterfaz de menú principal 
@@ -14,8 +15,10 @@ public class Receta implements Serializable{ // clase receta con sus atributos
     private String etiqueta;
     private Dificultad dificultad;
     private String procedimiento;
+    private List utensilio;
+    private List ingrediente;
 
-    public Receta(String nombre, Tiempo tiempo, float porcion, String etiqueta, Dificultad dificultad, String procedimiento) {
+    public Receta(String nombre, Tiempo tiempo, float porcion, String etiqueta, Dificultad dificultad, String procedimiento, List utensilio, List ingrediente) {
         consecutivo++;
         this.nombre = nombre;
         this.codigo = consecutivo;
@@ -24,6 +27,16 @@ public class Receta implements Serializable{ // clase receta con sus atributos
         this.etiqueta = etiqueta;
         this.dificultad = dificultad;
         this.procedimiento = procedimiento;
+        this.utensilio = utensilio;
+        this.ingrediente = ingrediente;
+    }
+    
+    public List getUtensilio() {
+        return utensilio;
+    }
+    
+    public List getIngrediente() {
+        return ingrediente;
     }
     
     public String getEtiqueta() {
@@ -88,6 +101,8 @@ public class Receta implements Serializable{ // clase receta con sus atributos
                 "- Porción: " + porcion + " \n \n" +
                 "- Codigo: " + codigo + " \n \n" +
                 "- Dificultad: " + dificultad  + " \n\n" +
+                "- Utensilios: " + utensilio + " \n\n" +
+                "- Ingredientes: " + ingrediente + "\n\n" +
                 "- Procedimiento: " + procedimiento ;
         
     }
