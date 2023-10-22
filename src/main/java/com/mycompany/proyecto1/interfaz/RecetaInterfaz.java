@@ -4,6 +4,7 @@
  */
 package com.mycompany.proyecto1.interfaz;
 
+import com.mycompany.proyecto1.Receta;
 import com.mycompany.proyecto1.Recetario;
 import com.mycompany.proyecto1.interfaz.AgregarReceta;
 import com.mycompany.proyecto1.interfaz.MostrarRecetaInterfaz;
@@ -22,6 +23,9 @@ public class RecetaInterfaz extends javax.swing.JDialog {
         private DefaultListModel<String> recetaListModel;
     
         Recetario recetario = Recetario.getInstancia();
+        
+        private String recetaSeleccionada; // Variable para almacenar el nombre de la receta seleccionada
+
     
     public RecetaInterfaz(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -49,6 +53,7 @@ public class RecetaInterfaz extends javax.swing.JDialog {
 
     }
     
+    
     public void actualizarListaIngredientes() {
         recetaListModel.clear(); // Limpia el modelo actual
 
@@ -71,11 +76,9 @@ public class RecetaInterfaz extends javax.swing.JDialog {
         tituloLabel = new javax.swing.JLabel();
         AgregarBtn = new javax.swing.JButton();
         EliminarBtn = new javax.swing.JButton();
-        VerBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         EditarBtn = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -105,8 +108,6 @@ public class RecetaInterfaz extends javax.swing.JDialog {
             }
         });
 
-        VerBtn.setText("Ver");
-
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -121,7 +122,7 @@ public class RecetaInterfaz extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setText("Ingrese el codigo de la receta que desea ver mas a detalle");
+        jLabel6.setText("Seleccione en la lista la receta que desea ver y dale al boton.");
 
         jButton1.setText("Ver Receta mas a detalle");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -139,29 +140,24 @@ public class RecetaInterfaz extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tituloLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(240, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(AtrasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(EliminarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(AgregarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(VerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(EditarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EliminarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AgregarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EditarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(26, 26, 26))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,17 +172,13 @@ public class RecetaInterfaz extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(EliminarBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(EditarBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(VerBtn)))
-                .addGap(38, 38, 38)
+                        .addComponent(EditarBtn)))
+                .addGap(76, 76, 76)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AtrasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AtrasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -223,24 +215,30 @@ public class RecetaInterfaz extends javax.swing.JDialog {
     }//GEN-LAST:event_EditarBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int selectedIndex = jList1.getSelectedIndex();
 
-        int codigo = (int) jSpinner1.getValue();
+        if (selectedIndex != -1) {
+            Receta recetaSeleccionada = recetario.getReceta(selectedIndex);
 
-        if (recetario.existeReceta(codigo)) {
-            String recetaInfo = recetario.verRecetaDetalles(codigo);
+            if (recetaSeleccionada != null) {
+                int codigo = recetaSeleccionada.getCodigo(); // Obtén el código de la receta seleccionada
+                if (recetario.existeReceta(codigo)) {
+                    String recetaInfo = recetario.verRecetaDetalles(codigo);
 
-            MostrarRecetaInterfaz mostrarReceta = new MostrarRecetaInterfaz(null, true);
+                    MostrarRecetaInterfaz mostrarReceta = new MostrarRecetaInterfaz(null, true);
 
-            // Establece el texto en un componente de texto (puedes usar un JTextArea o JLabel, dependiendo de tus necesidades)
-            mostrarReceta.jTextArea1.setLineWrap(true);
-            mostrarReceta.jTextArea1.setWrapStyleWord(true);
-            mostrarReceta.jTextArea1.setText(recetaInfo);
+                    // Establece el texto en un componente de texto (puedes usar un JTextArea o JLabel, dependiendo de tus necesidades)
+                    mostrarReceta.jTextArea1.setLineWrap(true);
+                    mostrarReceta.jTextArea1.setWrapStyleWord(true);
+                    mostrarReceta.jTextArea1.setText(recetaInfo);
 
-            // Muestra la nueva ventana
-            mostrarReceta.setVisible(true);
-        } else {
-            // Manejo de error si la receta no se encuentra
-            JOptionPane.showMessageDialog(this, "Receta no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
+                    // Muestra la nueva ventana
+                    mostrarReceta.setVisible(true);
+                } else {
+                    // Manejo de error si la receta no se encuentra
+                    JOptionPane.showMessageDialog(this, "Receta no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -291,12 +289,10 @@ public class RecetaInterfaz extends javax.swing.JDialog {
     private javax.swing.JButton AtrasBtn;
     private javax.swing.JButton EditarBtn;
     private javax.swing.JButton EliminarBtn;
-    private javax.swing.JButton VerBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
 }

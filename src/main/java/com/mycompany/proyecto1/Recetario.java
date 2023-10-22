@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 public class Recetario {
     
-    private static Recetario Instancia; // Esto lo cree para poder acceder a los metodos de recetario desde las interfaces graficas
+    private static Recetario Instancia; //esto lo cree para poder acceder a los metodos de recetario desde las interfaces graficas
     
     private ArrayList<Receta> recetas;
     private ArrayList<Utensilio> utensilios;
@@ -31,7 +31,7 @@ public class Recetario {
         this.etiquetas = new ArrayList<>();
     }
     
-    // Metodo para obtener la instancia unica de recetario, funiona para llamar los metodos en las interfacez
+    //metodo para obtener la instancia unica de recetario, funiona para llamar los metodos en las interfacez
     public static Recetario getInstancia() {
         if (Instancia == null) {
             Instancia = new Recetario();
@@ -209,7 +209,7 @@ public class Recetario {
     }
 
     
-    public void editarReceta(int codigo, String nuevoNombre, Tiempo nuevaDuracion, float nuevaPorcion, String nuevaEtiqueta, Dificultad nuevaDificultad, String nuevoProcedimiento) {
+    public void editarReceta(int codigo, String nuevoNombre, Tiempo nuevaDuracion, float nuevaPorcion, String nuevaEtiqueta, Dificultad nuevaDificultad, String nuevoProcedimiento, List utensilio, List ingrediente) {
         Receta receta = obtenerReceta(codigo);
         if (receta != null) {
             receta.setNombre(nuevoNombre);
@@ -218,6 +218,8 @@ public class Recetario {
             receta.setEtiqueta(nuevaEtiqueta);
             receta.setDificultad(nuevaDificultad);
             receta.setProcedimiento(nuevoProcedimiento);
+            receta.setUtensilio(utensilio);
+            receta.setIngrediente(ingrediente);
             System.out.println("Receta editada con éxito");
         } else {
             System.out.println("Receta ingresada no existe");
@@ -262,28 +264,35 @@ public class Recetario {
         if (index >= 0 && index < utensilios.size()) {
             return utensilios.get(index);
         }
-        return null; // Devuelve null si el índice está fuera de rango
+        return null; //devuelve null si el índice está fuera de rango
     }
     
     public Ingrediente getIngrediente(int index) {
         if (index >= 0 && index < ingredientes.size()) {
             return ingredientes.get(index);
         }
-        return null; // Devuelve null si el índice está fuera de rango
+        return null; //devuelve null si el índice está fuera de rango
+    }
+    
+    public Receta getReceta(int index) {
+        if (index >= 0 && index < recetas.size()) {
+            return recetas.get(index);
+        }
+        return null; //devuelve null si el índice está fuera de rango
     }
     
     public boolean isDisponibleUtensilio(Utensilio utensilio) {
         if (utensilio != null) {
             return utensilio.isDisponibleUtensilio();
         }
-        return false; // Devuelve false si el utensilio es nulo
+        return false; //devuelve false si el utensilio es nulo
     }
     
     public boolean isDisponibleIngrediente(Ingrediente ingrediente) {
         if (ingrediente != null) {
             return ingrediente.isDisponibleIngrediente();
         }
-        return false; // Devuelve false si el utensilio es nulo
+        return false; //devuelve false si el utensilio es nulo
     }
     
     public void GuardarDatos(){
