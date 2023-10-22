@@ -71,7 +71,6 @@ public class RecetaInterfaz extends javax.swing.JDialog {
         tituloLabel = new javax.swing.JLabel();
         AgregarBtn = new javax.swing.JButton();
         EliminarBtn = new javax.swing.JButton();
-        VerBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         EditarBtn = new javax.swing.JButton();
@@ -104,8 +103,6 @@ public class RecetaInterfaz extends javax.swing.JDialog {
                 EliminarBtnActionPerformed(evt);
             }
         });
-
-        VerBtn.setText("Ver");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -159,7 +156,6 @@ public class RecetaInterfaz extends javax.swing.JDialog {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(EliminarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(AgregarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(VerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(EditarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(26, 26, 26))))
         );
@@ -176,10 +172,8 @@ public class RecetaInterfaz extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(EliminarBtn)
                         .addGap(18, 18, 18)
-                        .addComponent(EditarBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(VerBtn)))
-                .addGap(38, 38, 38)
+                        .addComponent(EditarBtn)))
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
@@ -291,7 +285,6 @@ public class RecetaInterfaz extends javax.swing.JDialog {
     private javax.swing.JButton AtrasBtn;
     private javax.swing.JButton EditarBtn;
     private javax.swing.JButton EliminarBtn;
-    private javax.swing.JButton VerBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JList<String> jList1;

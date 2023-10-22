@@ -39,6 +39,14 @@ public class Receta implements Serializable{ // clase receta con sus atributos
         return ingrediente;
     }
     
+    public void setUtensilio(List<String> nuevosUtensilios) {
+        this.utensilio = nuevosUtensilios;
+    }
+
+    public void setIngrediente(List<String> nuevosIngredientes) {
+        this.ingrediente = nuevosIngredientes;
+    }
+    
     public String getEtiqueta() {
         return etiqueta;
     }

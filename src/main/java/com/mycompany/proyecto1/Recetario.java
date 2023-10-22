@@ -209,7 +209,7 @@ public class Recetario {
     }
 
     
-    public void editarReceta(int codigo, String nuevoNombre, Tiempo nuevaDuracion, float nuevaPorcion, String nuevaEtiqueta, Dificultad nuevaDificultad, String nuevoProcedimiento) {
+    public void editarReceta(int codigo, String nuevoNombre, Tiempo nuevaDuracion, float nuevaPorcion, String nuevaEtiqueta, Dificultad nuevaDificultad, String nuevoProcedimiento, List utensilio, List ingrediente) {
         Receta receta = obtenerReceta(codigo);
         if (receta != null) {
             receta.setNombre(nuevoNombre);
@@ -218,6 +218,8 @@ public class Recetario {
             receta.setEtiqueta(nuevaEtiqueta);
             receta.setDificultad(nuevaDificultad);
             receta.setProcedimiento(nuevoProcedimiento);
+            receta.setUtensilio(utensilio);
+            receta.setIngrediente(ingrediente);
             System.out.println("Receta editada con éxito");
         } else {
             System.out.println("Receta ingresada no existe");

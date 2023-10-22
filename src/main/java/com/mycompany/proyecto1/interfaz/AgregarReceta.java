@@ -475,9 +475,13 @@ public class AgregarReceta extends javax.swing.JDialog {
 }
                          
                 Recetario recetario = Recetario.getInstancia();
-                recetario.agregarReceta(nombre, tiempo, valorPorcion, etiqueta, dificultad, procedimiento, utensiliosSeleccionados, ingredientesSeleccionados);
-                SuccessBox("Se ha agregado la receta con éxito", "");
-                dispose(); // Cierra esta ventana únicamente, no el proyecto
+                try {
+                    recetario.agregarReceta(nombre, tiempo, valorPorcion, etiqueta, dificultad, procedimiento, utensiliosSeleccionados, ingredientesSeleccionados);
+                    SuccessBox("Se ha agregado la receta con éxito", "");
+                    dispose(); // Cierra esta ventana únicamente, no el proyecto
+                } catch (Exception e){
+                    FailBox("Por favor, complete todos los campos con valores válidos", "");
+                }
             } else {
                 FailBox("Por favor, complete todos los campos con valores válidos", "");
             }
