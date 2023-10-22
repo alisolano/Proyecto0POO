@@ -23,27 +23,36 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                      <Component id="tituloLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="CerrarBtn" min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="recetasBtn" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
-                          <Component id="cocinarBtn" min="-2" pref="160" max="-2" attributes="0"/>
-                          <Component id="alacenaBtn" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
-                          <Component id="utensiliosBtn" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                              <Component id="tituloLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="recetasBtn" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="cocinarBtn" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="alacenaBtn" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="utensiliosBtn" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
+                      <EmptySpace min="0" pref="87" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="93" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,10 +67,14 @@
               <Component id="recetasBtn" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="alacenaBtn" min="-2" pref="51" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="utensiliosBtn" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-              <Component id="CerrarBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="CerrarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -126,6 +139,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="utensiliosBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CargarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Guardar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GuardarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
