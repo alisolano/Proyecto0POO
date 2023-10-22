@@ -91,7 +91,6 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -159,7 +158,7 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setText("Ingrese el codigo de la receta que desea ver mas a detalle");
+        jLabel6.setText("Seleccione en la lista la receta que desea ver y dale al boton.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,16 +192,14 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(167, 167, 167)
                                 .addComponent(jLabel5)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 241, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(CancelarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 166, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel6)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -228,10 +225,8 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CancelarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,27 +268,31 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
     }//GEN-LAST:event_filtrarBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int selectedIndex = jList1.getSelectedIndex();
 
-    int codigo = (int) jSpinner1.getValue();
+        if (selectedIndex != -1) {
+            Receta recetaSeleccionada = recetario.getReceta(selectedIndex);
 
-        if (recetario.existeReceta(codigo)) {
-            String recetaInfo = recetario.verRecetaDetalles(codigo);
+            if (recetaSeleccionada != null) {
+                int codigo = recetaSeleccionada.getCodigo(); // Obtén el código de la receta seleccionada
+                if (recetario.existeReceta(codigo)) {
+                    String recetaInfo = recetario.verRecetaDetalles(codigo);
 
-            MostrarRecetaInterfaz mostrarReceta = new MostrarRecetaInterfaz(null, true);
+                    MostrarRecetaInterfaz mostrarReceta = new MostrarRecetaInterfaz(null, true);
 
-            // Establece el texto en un componente de texto (puedes usar un JTextArea o JLabel, dependiendo de tus necesidades)
-            
-            mostrarReceta.jTextArea1.setLineWrap(true);
-            mostrarReceta.jTextArea1.setWrapStyleWord(true);
-            mostrarReceta.jTextArea1.setText(recetaInfo);
+                    // Establece el texto en un componente de texto (puedes usar un JTextArea o JLabel, dependiendo de tus necesidades)
+                    mostrarReceta.jTextArea1.setLineWrap(true);
+                    mostrarReceta.jTextArea1.setWrapStyleWord(true);
+                    mostrarReceta.jTextArea1.setText(recetaInfo);
 
-            // Muestra la nueva ventana
-            mostrarReceta.setVisible(true);
-        } else {
-            // Manejo de error si la receta no se encuentra
-            JOptionPane.showMessageDialog(this, "Receta no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
+                    // Muestra la nueva ventana
+                    mostrarReceta.setVisible(true);
+                } else {
+                    // Manejo de error si la receta no se encuentra
+                    JOptionPane.showMessageDialog(this, "Receta no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -354,6 +353,5 @@ public class QueCocinarInterfaz extends javax.swing.JDialog {
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 }

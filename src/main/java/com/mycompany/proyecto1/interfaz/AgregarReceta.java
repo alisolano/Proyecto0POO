@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -563,14 +564,15 @@ public class AgregarReceta extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        //AgregarIngredientes a = new AgregarIngredientes(null, true);
-        //a.setVisible(true);
         String nombre = jTextField2.getText();
-        
-        Recetario recetario = Recetario.getInstancia();
-        
-        recetario.agregarIngrediente(nombre);
-        actualizarListaIngredientes();
+
+        if (nombre.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El nombre del ingrediente no puede estar en blanco.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Recetario recetario = Recetario.getInstancia();
+            recetario.agregarIngrediente(nombre);
+            actualizarListaIngredientes();
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
     public void actualizarListaIngredientes() {  
         DefaultComboBoxModel<String> ingredientesModel = new DefaultComboBoxModel<>();
@@ -594,10 +596,15 @@ public class AgregarReceta extends javax.swing.JDialog {
     
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        String nombre = jTextField3.getText();      
-        Recetario recetario = Recetario.getInstancia();    
-        recetario.agregarUtensilio(nombre);
-        actualizarListaUtensilios();
+        String nombre = jTextField3.getText();
+
+        if (nombre.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El nombre del utensilio no puede estar en blanco.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Recetario recetario = Recetario.getInstancia();
+            recetario.agregarUtensilio(nombre);
+            actualizarListaUtensilios();
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
