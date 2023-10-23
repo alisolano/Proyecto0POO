@@ -96,11 +96,7 @@ public class Receta implements Serializable{ // clase receta con sus atributos
     }
     
     public String toString(){
-        return "Nombre: " + nombre + " \n" +
-                ", Duración: " + tiempo + " \n" + 
-                ", Porción: " + porcion + " \n" +
-                ", Codigo: " + codigo + " \n" +
-                ", Dificultad: " + dificultad ;
+        return "Nombre: " + nombre + " \n";
     }
     
     public String detalles() {
